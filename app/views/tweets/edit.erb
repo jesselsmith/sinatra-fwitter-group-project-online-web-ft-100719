@@ -1,0 +1,11 @@
+<% if @tweet.user == @current_user %>
+  <form action="/tweets/<%=@tweet.id%>/edit" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <label for="content">Edit Content:</label>
+    <input type="text" name="content" id="content" value="<%= @tweet.content %>">
+    <input type="submit" value="Submit" id="submit">
+  </form>
+<% else %>
+  <h2>You can only edit your own tweets!</h2>
+  <a href="/tweets">Back to Tweets</a>
+<% end %>
